@@ -2,7 +2,7 @@ import transport.*;
 import transport.CategoryDrivers;
 
 import javax.swing.*;
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class Main {
@@ -37,10 +37,9 @@ public class Main {
         Driver2<Lorrycar> driver3 = new Driver2("Якименко Вероника Владимировна",
                 true, 123,CategoryDrivers.CATEGORY_C);
 
-        ArrayList<Car> cars = new ArrayList<>();
-        cars.add(passengercar1); cars.add(passengercar2); cars.add(passengercar3); cars.add(passengercar4);
-        cars.add(bus1); cars.add(bus2); cars.add(bus3); cars.add(bus4);
-        cars.add(lorrycar1); cars.add(lorrycar2); cars.add(lorrycar3); cars.add(lorrycar4);
+        List<Car> cars = List.of(passengercar1, passengercar2, passengercar3, passengercar4,
+                bus1, bus2, bus3, bus4,
+                lorrycar1, lorrycar2, lorrycar3, lorrycar4);
 
 
 
