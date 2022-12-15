@@ -1,3 +1,4 @@
+import service.ServiceStation;
 import transport.*;
 import transport.CategoryDrivers;
 
@@ -47,20 +48,26 @@ public class Main {
         passengercar1.addDriver(new Driver<>("иванов иван иванович",
                 true, 12, CategoryDrivers.CATEGORY_B));
         passengercar1.addSponsor(new Sponsor<>("Соса+сола", 124567));
-        passengercar1.addMechanic(new Mechanic<>("Вероника","Якименко","Мишлен"));
+        passengercar1.addMechanic(new Mechanic<>("Вероника", "Якименко", "Мишлен"));
         infoPrint(cars);
 
+        ServiceStation serviceStation = new ServiceStation();
+      serviceStation.addCarToQueue(passengercar1);
+      serviceStation.addCarToQueue(passengercar2);
+      serviceStation.addCarToQueue(passengercar2);
+
+        serviceStation.doServiceCar();
 
 
     }
 
     public static void infoPrint(List<Car> cars) {
-        for (Car car :cars)
+        for (Car car : cars)
+            System.out.println("Авто"
+                    + car.getBrand() + " " + car.getModel() + "\n"
+                    + "Водители - " + car.getDrivers() + "\n"
+                    + "Спонсоры - " + car.getSponsors() + "\n"
+                    + "Механики - " + car.getMechanics());
 
-        JOptionPane.showMessageDialog(null,"Авто"
-        + car.getBrand()+" " + car.getModel() + "\n"
-        + "Водители - " + car.getDrivers() + "\n"
-        + "Спонсоры - " + car.getSponsors() + "\n"
-        + "Механики - " + car.getMechanics());
     }
 }
