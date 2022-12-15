@@ -50,8 +50,6 @@ public class Lorrycar extends Car implements Сompeting {
     @Override
     public void race() {
         System.out.println("Cегодня проходит гонка в классе легковых Грузовых автомобилей");
-        start();
-        stop();
     }
 
     @Override

@@ -1,12 +1,16 @@
 package transport;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public abstract class Car extends Transport implements Сompeting {
 
     private double engineVolume;
+    private final List<Driver<?>> drivers = new ArrayList<>();
+    private final List<Sponsor<?>> sponsors = new ArrayList<>();
+    private final List<Mechanic<?>> mechanics = new ArrayList<>();
 
 
 
@@ -26,6 +30,17 @@ public abstract class Car extends Transport implements Сompeting {
         }
     }
 
+    public void addDriver(Driver<?>... drivers) {
+        this.drivers.addAll(Arrays.asList(drivers));
+    }
+    public void addSponsor(Sponsor<?>... sponsors) {
+        this.sponsors.addAll(Arrays.asList(sponsors));
+    }
+
+
+    public void addMechanic(Mechanic<?>... mechanics) {
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
 
     public double getEngineVolume() {
         return engineVolume;
@@ -64,7 +79,31 @@ public abstract class Car extends Transport implements Сompeting {
                 ;
     }
 
+    @Override
+    public String getBrand() {
+        return super.getBrand();
+    }
+
+    @Override
+    public String getModel() {
+        return super.getModel();
+    }
+
+    public List<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public List<Sponsor<?>> getSponsors() {
+        return sponsors;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
     public abstract boolean service();
+
+
 
     public static void startService(Car... cars) throws IllegalArgumentException {
         for (int i = 0; i < cars.length; i++) {

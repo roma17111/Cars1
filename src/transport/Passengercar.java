@@ -69,8 +69,10 @@ public class Passengercar extends Car implements Сompeting{
         stop();
     }
 
-
-
+    @Override
+    public String getModel() {
+        return super.getModel();
+    }
 
     @Override
     public void pitStop() {

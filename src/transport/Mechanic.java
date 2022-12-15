@@ -1,6 +1,6 @@
 package transport;
 
-public class Mechanic <C extends Car>{
+public class Mechanic <C extends Transport>{
     private final String firstName;
     private final String lastName;
     private final String companyJob;
@@ -29,5 +29,13 @@ public class Mechanic <C extends Car>{
 
     public void repCar(C car) {
         System.out.println("Машина " +car.getModel()+car.getBrand()+ " отремонтирована");
+    }
+
+    @Override
+    public String toString() {
+        return
+                "Ф.И.О -" + firstName + '\n' +
+                        "Фамилия - " + lastName + '\n' +
+                        "Компания - " + companyJob;
     }
 }

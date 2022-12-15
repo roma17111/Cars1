@@ -1,6 +1,6 @@
 package transport;
 
-public class Driver1<D extends Bus> {
+public class Driver1<D extends Driver<Bus>> {
 
     private CategoryDrivers categoryDrivers;
     private final String fullName;
@@ -54,11 +54,12 @@ public class Driver1<D extends Bus> {
             this.experience = experience;}
     }
 
-    public void start(D bus) {
+    public void start(Bus bus) {
         System.out.println("\n" + "Водитель " + getFullName() +
                 " управляющий автобусом " + bus.getBrand() + " " + bus.getModel() + "\n"
                 + " и будет участвовать в заезде" );
         bus.printInfoAboutCars();
+
     }
 
     public void stop() {
@@ -67,6 +68,13 @@ public class Driver1<D extends Bus> {
 
     public void refill() {
         System.out.println("Водитель "+ getFullName() +" заправляет свой транспорт.");
+    }
+
+    @Override
+    public String toString() {
+        return  " Ф.И.О -" + fullName +
+                " Стаж вождения - " + experience +
+                " Категория прав - " + categoryDrivers ;
     }
 }
 

@@ -1,41 +1,40 @@
 package transport;
 
-public class Driver2<C extends Driver<Lorrycar>> {
+public class Driver <T extends Transport>{
+    private CategoryDrivers categoryDrivers;
     private final String fullName;
     private boolean license;
     private int experience;
 
-    private CategoryDrivers categoryDrivers;
 
 
-    public Driver2(String fullName, boolean license, int experience,CategoryDrivers categoryDrivers) {
+    public Driver(String fullName, boolean license, int experience,CategoryDrivers categoryDrivers) {
         this.fullName = fullName;
         this.license = license;
         setExperience(experience);
         setCategoryDrivers(categoryDrivers);
 
-    }
 
-    public CategoryDrivers getCategoryDrivers() {
-        return categoryDrivers;
-    }
-
-    public void setCategoryDrivers(CategoryDrivers categoryDrivers) {
-        if (categoryDrivers !=CategoryDrivers.CATEGORY_C)
-            throw new IllegalArgumentException("Некорректная категория прав");
-        else {
-            this.categoryDrivers = categoryDrivers;
-        }
     }
 
     public String getFullName() {
         return fullName;
     }
 
+
+    public CategoryDrivers getCategoryDrivers() {
+        return categoryDrivers;
+    }
+
+    public void setCategoryDrivers(CategoryDrivers categoryDrivers) {
+            this.categoryDrivers = categoryDrivers;
+        }
+
+
+
     public boolean isLicense() {
         return license;
     }
-
     public void setLicense(boolean license) {
         this.license = license;
     }
@@ -50,11 +49,11 @@ public class Driver2<C extends Driver<Lorrycar>> {
         }else {
             this.experience = experience;}
     }
-    public void start(Lorrycar lorrycar) {
-        System.out.println("\n" + "Водитель " + getFullName() + '\n' +
-                " управляющий грузовиком: "  + lorrycar.getBrand() + " " + lorrycar.getModel()
+
+    public void start(T car) {
+        System.out.println("\n" + "Водитель " + getFullName() +
+                " управляющий транспортом " + car.getBrand() + " " + car.getModel() + "\n"
                 + " и будет участвовать в заезде" );
-        lorrycar.printInfoAboutCars();
     }
 
     public void stop() {
@@ -67,8 +66,10 @@ public class Driver2<C extends Driver<Lorrycar>> {
 
     @Override
     public String toString() {
-        return  " Ф.И.О -" + fullName +
+        return
+                " Ф.И.О -" + fullName +
                 " Стаж вождения - " + experience +
-                " Категория прав - " + categoryDrivers ;
+                " Категория прав - " + categoryDrivers
+                ;
     }
 }

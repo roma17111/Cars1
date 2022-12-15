@@ -1,8 +1,6 @@
 package transport;
 
 
-import org.w3c.dom.ls.LSOutput;
-
 public class Bus extends Car implements Сompeting {
     public enum Capacity {
         EXTRA_SMALL(0, 10),
