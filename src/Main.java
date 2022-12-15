@@ -1,6 +1,9 @@
 import transport.*;
 import transport.CategoryDrivers;
 
+import javax.swing.*;
+import java.util.ArrayList;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -34,18 +37,13 @@ public class Main {
         Driver2<Lorrycar> driver3 = new Driver2("Якименко Вероника Владимировна",
                 true, 123,CategoryDrivers.CATEGORY_C);
 
-        driver1.start(passengercar1);
-        driver2.start(bus1);
-        driver3.start(lorrycar2);
-        driver1.refill();
-        driver2.refill();
-        driver3.stop();
+        ArrayList<Car> cars = new ArrayList<>();
+        cars.add(passengercar1); cars.add(passengercar2); cars.add(passengercar3); cars.add(passengercar4);
+        cars.add(bus1); cars.add(bus2); cars.add(bus3); cars.add(bus4);
+        cars.add(lorrycar1); cars.add(lorrycar2); cars.add(lorrycar3); cars.add(lorrycar4);
 
-        Car.raceStart(passengercar1,passengercar1,passengercar2,passengercar3);
-        System.out.println(passengercar2);
-        System.out.println(lorrycar1);
-        System.out.println(bus1);
-        Car.startService(bus1,passengercar1,passengercar4,lorrycar1);
+
+
     }
 
 }
