@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 public class Driver <T extends Transport>{
     private CategoryDrivers categoryDrivers;
     private final String fullName;
@@ -62,6 +64,22 @@ public class Driver <T extends Transport>{
 
     public void refill() {
         System.out.println("Водитель "+ getFullName() +" заправляет свой транспорт.");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver<?> driver = (Driver<?>) o;
+        if (license == driver.license && experience == driver.experience && categoryDrivers == driver.categoryDrivers && fullName.equals(driver.fullName)) {
+            throw new IllegalArgumentException("Никаких клонов");
+        }
+        return license == driver.license && experience == driver.experience && categoryDrivers == driver.categoryDrivers && fullName.equals(driver.fullName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(categoryDrivers, fullName, license, experience);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 public class Sponsor <C extends Transport>{
     private final String name;
     private final Integer totalPay;
@@ -24,7 +26,21 @@ public class Sponsor <C extends Transport>{
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sponsor<?> sponsor = (Sponsor<?>) o;
+        if (name.equals(sponsor.name) && totalPay.equals(sponsor.totalPay)) {
+            throw new RuntimeException("Не быть в гонке одинаковым спонсорам");
+        }
+        return name.equals(sponsor.name) && totalPay.equals(sponsor.totalPay);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, totalPay);
+    }
 
     @Override
     public String toString() {

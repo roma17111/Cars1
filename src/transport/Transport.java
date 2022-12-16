@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 public abstract class Transport {
     private final String brand;
     private final String model;
@@ -29,6 +31,22 @@ public abstract class Transport {
 
     public String getModel() {
         return model;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport transport = (Transport) o;
+        if (brand.equals(transport.brand) && model.equals(transport.model)) {
+            throw new UnsupportedOperationException("Одинаковых машин быть не должно.");
+        }
+        return brand.equals(transport.brand) && model.equals(transport.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model);
     }
 
     @Override

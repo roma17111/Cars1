@@ -1,6 +1,8 @@
 package transport;
 
 
+import java.util.Objects;
+
 public class Bus extends Car implements Сompeting {
     public enum Capacity {
         EXTRA_SMALL(0, 10),
@@ -83,6 +85,20 @@ public class Bus extends Car implements Сompeting {
         pitStop();
         bestTimeOfLap();
         maxSpeed();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Bus bus = (Bus) o;
+        return capacity == bus.capacity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), capacity);
     }
 
     @Override
