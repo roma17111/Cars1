@@ -1,16 +1,14 @@
 package transport;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public abstract class Car extends Transport implements Сompeting {
 
     private double engineVolume;
-    private final List<Driver<?>> drivers = new ArrayList<>();
-    private final List<Sponsor<?>> sponsors = new ArrayList<>();
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final Set<Driver<?>> drivers = new HashSet<>();
+    private final Set<Sponsor<?>> sponsors = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
 
 
 
@@ -70,6 +68,23 @@ public abstract class Car extends Transport implements Сompeting {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        if (sponsors.equals(car.sponsors) || drivers.equals(car.drivers) || mechanics.equals(car.mechanics)) {
+            throw new IllegalArgumentException("Никаких повторений");
+        }
+        return Double.compare(car.engineVolume, engineVolume) == 0 && drivers.equals(car.drivers) &&
+                sponsors.equals(car.sponsors) && mechanics.equals(car.mechanics);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(engineVolume, drivers, sponsors, mechanics);
+    }
+
+    @Override
     public String toString() {
         return "Класс автомобили: " + "\n" +
                 "Бренд: " + getBrand() + "\n" +
@@ -89,15 +104,15 @@ public abstract class Car extends Transport implements Сompeting {
         return super.getModel();
     }
 
-    public List<Driver<?>> getDrivers() {
+    public Set<Driver<?>> getDrivers() {
         return drivers;
     }
 
-    public List<Sponsor<?>> getSponsors() {
+    public Set<Sponsor<?>> getSponsors() {
         return sponsors;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 

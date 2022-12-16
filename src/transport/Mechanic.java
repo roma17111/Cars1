@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.Objects;
+
 public class Mechanic <C extends Transport>{
     private final String firstName;
     private final String lastName;
@@ -29,6 +31,22 @@ public class Mechanic <C extends Transport>{
 
     public void repCar(C car) {
         System.out.println("Машина " +car.getModel()+car.getBrand()+ " отремонтирована");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        if (firstName.equals(mechanic.firstName) && lastName.equals(mechanic.lastName) && companyJob.equals(mechanic.companyJob)) {
+            throw new IllegalArgumentException("Без повторений");
+        }
+        return firstName.equals(mechanic.firstName) && lastName.equals(mechanic.lastName) && companyJob.equals(mechanic.companyJob);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, companyJob);
     }
 
     @Override

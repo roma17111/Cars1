@@ -39,6 +39,7 @@ public class Main {
                 true, 123, CategoryDrivers.CATEGORY_C);
 
         passengercar1.addDriver(driver);
+        passengercar1.addDriver(driver);
 
         List<Car> cars = List.of(passengercar1, passengercar2, passengercar3, passengercar4,
                 bus1, bus2, bus3, bus4,
@@ -49,14 +50,17 @@ public class Main {
                 true, 12, CategoryDrivers.CATEGORY_B));
         passengercar1.addSponsor(new Sponsor<>("Соса+сола", 124567));
         passengercar1.addMechanic(new Mechanic<>("Вероника", "Якименко", "Мишлен"));
+        passengercar1.addMechanic(new Mechanic<>("Роман", "Якименко", "Мишлен"));
+        passengercar1.addDriver(new Driver<>("Снршеев серпгей сергеевич",true,12,CategoryDrivers.CATEGORY_B));
+
         infoPrint(cars);
 
-        ServiceStation serviceStation = new ServiceStation();
+        /*      ServiceStation serviceStation = new ServiceStation();
       serviceStation.addCarToQueue(passengercar1);
       serviceStation.addCarToQueue(passengercar2);
       serviceStation.addCarToQueue(passengercar2);
 
-        serviceStation.doServiceCar();
+        serviceStation.doServiceCar();*/
 
 
     }
